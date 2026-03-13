@@ -1,5 +1,5 @@
 # Imagen base de Java
-FROM openjdk:17-jdk-slim
+FROM mcr.microsoft.com/openjdk/jdk:21-ubuntu
 
 # Directorio de trabajo
 WORKDIR /app
