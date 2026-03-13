@@ -1,14 +1,14 @@
-# Imagen base de Java
-FROM mcr.microsoft.com/openjdk/jdk:21-ubuntu
-
-# Directorio de trabajo
+# Etapa 1: Construir la aplicación, haciendo uso de Maven y Eclipse Temurin 21
+FROM maven:3.9.9-eclipse-temurin-21 AS builder
 WORKDIR /app
+COPY pom.xml .
+COPY src ./src
+RUN mvn clean package -DskipTests
 
-# Copiar el JAR generado por Spring Boot
-COPY target/gestion-citas-0.0.1-SNAPSHOT.jar app.jar
 
-# Exponer el puerto
+# Etapa 2: Crear la imagen final con la aplicación construida, usando Eclipse Temurin 21 JRE
+FROM eclipse-temurin:21-jre
+WORKDIR /app
+COPY --from=builder /app/target/*.jar app.jar
 EXPOSE 8080
-
-# Comando de ejecución
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-Dserver.port=${PORT:8080}", "-jar", "app.jar"]
