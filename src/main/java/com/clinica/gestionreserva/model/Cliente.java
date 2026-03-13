@@ -1,13 +1,15 @@
 package com.clinica.gestionreserva.model;
 
 import jakarta.persistence.*;
-import lombok.Setter;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
-// ================== CLIENTE ==================
-
-@Setter
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 public class Cliente {
     @Id

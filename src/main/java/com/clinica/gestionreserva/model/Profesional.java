@@ -2,9 +2,14 @@ package com.clinica.gestionreserva.model;
 
 import jakarta.persistence.*;
 import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 @Entity
-@Setter
-@Getter
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Profesional {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

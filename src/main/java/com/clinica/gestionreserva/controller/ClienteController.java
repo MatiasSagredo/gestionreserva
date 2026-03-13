@@ -2,9 +2,9 @@ package com.clinica.gestionreserva.controller;
 
 import org.springframework.web.servlet.mvc.Controller;
 
-import com.clinica.gestionreserva.model.Reserva;
-import com.clinica.gestionreserva.repository.ReservaRepository;
-import com.clinica.gestionreserva.service.ReservaService;
+import com.clinica.gestionreserva.model.Cliente;
+import com.clinica.gestionreserva.repository.ClienteRepository;
+import com.clinica.gestionreserva.service.ClienteService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,42 +15,46 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/reservas")
-public class ReservaController {
+@RequestMapping("/clientes")
+public class ClienteController {
 
     @Autowired
-    private ReservaService reservaService;
+    private ClienteService clienteService;
 
     @GetMapping
-    public List<Reserva> getAllReservas() {
-        return reservaService.getAllReservas();
+    public List<Cliente> getAllClientes() {
+        return clienteService.getAllClientes();
     }
 
     @GetMapping("/{id}")
-    public Reserva getReservaById(@PathVariable Long id) {
-        return reservaService.getReservaById(id);
+    public Cliente getClienteById(@PathVariable Long id) {
+        return clienteService.getClienteById(id);
     }
 
     @PostMapping
-    public Reserva createReserva(@RequestBody Reserva reserva) {
-        return reservaService.createReserva(reserva);
+    public Cliente createCliente(@RequestBody Cliente cliente) {
+        return clienteService.createCliente(cliente);
     }
 
     @PutMapping("/{id}")
-    public Reserva updateReserva(@PathVariable Long id, @RequestBody Reserva reserva) {
-        return reservaService.updateReserva(id, reserva);
+    public Cliente updateCliente(@PathVariable Long id, @RequestBody Cliente cliente) {
+        return clienteService.updateCliente(id, cliente);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteReserva(@PathVariable Long id) {
-        reservaService.deleteReserva(id);
+    public void deleteCliente(@PathVariable Long id) {
+        clienteService.deleteCliente(id);
     }
 }
+
